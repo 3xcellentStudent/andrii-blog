@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.invisible {
+  opacity: 1;
+  animation: experience_item_list_invisible_animation 300ms ease forwards;
+  transform: translateX(0%);
+}
+
+@keyframes experience_item_list_invisible_animation {
+  from {
+    transform: translateX(0%);
+  } to {
+    transform: translateX(-10%);
+  }
+}
