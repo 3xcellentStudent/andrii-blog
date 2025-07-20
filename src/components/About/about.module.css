@@ -1,0 +1,28 @@
+.title {
+  display: none;
+}
+
+.paragraph {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1080px) {
+  .container {
+    width: 100%;
+  }
+
+  .title {
+    display: block;
+    margin-bottom: 1rem;
+  }  
+}
+
+@media screen and (max-width: 570px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .paragraph {
+    font-size: .9rem;
+  }
+}
