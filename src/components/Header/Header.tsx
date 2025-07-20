@@ -17,7 +17,7 @@ export default function Header(){
     const sections = document.querySelectorAll(".section_anchor");
 
     sections.forEach((section, index) => {
-      if(scrollY >= section.offsetTop - marginTop){
+      if(scrollY >= (section as HTMLTableSectionElement).offsetTop - marginTop){
         setActiveTab(index);
       };
     })
