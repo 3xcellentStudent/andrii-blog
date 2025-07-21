@@ -42,7 +42,10 @@
   cursor: default;
 }
 
-.tab:hover, .tab_active {
+/* .tab:hover, .tab_active {
+  opacity: 1;
+} */
+.tab_active {
   opacity: 1;
 }
 
@@ -57,7 +60,11 @@
   transition: .1s linear;
 }
 
-.tab:hover:before, .tab_active::before {
+/* .tab:hover:before, .tab_active::before {
+  width: 40px;
+  opacity: 1;
+} */
+.tab_active::before {
   width: 40px;
   opacity: 1;
 }

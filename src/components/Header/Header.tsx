@@ -11,7 +11,7 @@ export default function Header(){
   const [activeTab, setActiveTab] = useState(0)
 
   function mouseScrollHandler(){
-    const marginTop = 196;
+    const marginTop = 296;
     const {scrollY} = window
 
     const sections = document.querySelectorAll(".section_anchor");

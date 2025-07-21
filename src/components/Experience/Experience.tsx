@@ -16,27 +16,6 @@ function Experience(){
 
   const {observe} = useObserver(.8);
 
-  // const fakeData = [
-  //   {
-  //     workPeriod: {from: "2024", to: "Present"}, 
-  //     title: "Personal E-commerce project", 
-  //     position: "Full-Stack Engineer", 
-  //     description: "A scalable web platform for managing sales, payments, inventory, and shipping. Built with Next.js, Spring Boot, and MongoDB, featuring microservices, secure API infrastructure, and payment integrations with Stripe API.",
-  //   },
-  //   {
-  //     workPeriod: {from: "2024", to: "Present"}, 
-  //     title: "Personal E-commerce project", 
-  //     position: "Full-Stack Engineer", 
-  //     description: "A scalable web platform for managing sales, payments, inventory, and shipping. Built with Next.js, Spring Boot, and MongoDB, featuring microservices, secure API infrastructure, and payment integrations with Stripe API.",
-  //   },
-  //   {
-  //     workPeriod: {from: "2024", to: "Present"}, 
-  //     title: "Personal E-commerce project", 
-  //     position: "Full-Stack Engineer", 
-  //     description: "A scalable web platform for managing sales, payments, inventory, and shipping. Built with Next.js, Spring Boot, and MongoDB, featuring microservices, secure API infrastructure, and payment integrations with Stripe API.",
-  //   },
-  // ]
-
   useEffect(() => {
     setData()
   }, [])
@@ -65,7 +44,6 @@ function Experience(){
       <SectionTitle text="Experience" />
       <ul ref={SectionRef} className={styles.list}>
           {state?.map((props, index) => {
-            // console.log(intersectingArray[index])
             return(
               <div key={index}>
                 {
