@@ -1,6 +1,8 @@
 export default interface ExperienceType {
-  workPeriod: {from: string, to: string},
+  workPeriod: {from: string, to: string}
   title: string
   position: string
   description: string
+  list: string[]
+  link?: string
 }

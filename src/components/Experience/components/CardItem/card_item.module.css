@@ -1,14 +1,14 @@
 .container {
   padding: 2rem 0;
-  transition: .2s ease;
+  transition: .2s ease-in-out;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 -1px 1px transparent;
   margin-bottom: 1rem;
-  cursor: default;
   opacity: 1;
   box-shadow: 0 -1px 1px #cccccc25;
   backdrop-filter: brightness(1.1);
+  position: relative;
 }
 
 .container:hover {
@@ -64,6 +64,33 @@
 
 .description {
   opacity: .75;
+  font-size: 1rem;
+}
+
+.svg_container {
+  position: absolute;
+  display: block;
+  top: .5rem;
+  right: .5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.svgrepo_color_stroke {
+  stroke: #fff;
+  transition: .2s ease-in-out;
+}
+
+.container:hover .svgrepo_color_stroke {
+  stroke: var(--blue);
+}
+
+.list {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 768px){

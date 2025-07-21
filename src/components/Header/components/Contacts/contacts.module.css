@@ -22,7 +22,7 @@
 }
 
 .list_item:hover .svgrepo_color {
-  fill: #00d3f2;
+  fill: var(--blue);
 }
 
 .svgrepo_color {
@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 1080px) {
   .svgrepo_color {
-    fill: #00d3f2;
+    fill: var(--blue);
   }
 
   .container {

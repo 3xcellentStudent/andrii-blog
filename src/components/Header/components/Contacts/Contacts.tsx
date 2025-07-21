@@ -27,7 +27,6 @@ export default function Contacts(){
       (docs.data() as {links: ContactsTypeFromDb[]}).links.forEach((doc, index) => {
         const $svg = $svgArray[index]
         const object: ContactsTypeWithSVG = {$svg, ...doc as {source: ContactsTypeFromDb["source"], type: ContactsTypeFromDb["type"]}}
-        console.log(object)
         setState(prev => [...prev, object])
       })
     );
@@ -39,7 +38,7 @@ export default function Contacts(){
         state?.map(({$svg, source, type}, index) => {
           return(
             <li key={index} className={styles.list_item}>
-              <a className={styles.link} href={type === "mailto" ? `mailto:${source}` : source}>
+              <a target="_blank" className={styles.link} href={type === "mailto" ? `mailto:${source}` : source}>
                 <$svg className={styles.svgrepo_color} />
               </a>
             </li>
