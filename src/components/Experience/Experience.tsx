@@ -33,7 +33,7 @@ function Experience(){
   const [intersectingArray, setIntersectingArray] = useState<boolean[]>([]);
   const SectionRef = useRef<HTMLUListElement | null>(null);
 
-  const {observe} = useObserver(.8);
+  const {observe} = useObserver(.5);
 
   useEffect(() => {
     setData()
