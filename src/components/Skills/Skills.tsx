@@ -2,7 +2,7 @@
 import { Fragment, memo, useEffect, useRef, useState, } from "react"
 import SectionTitle from "../common/SectionTitle/SectionTitle"
 import styles from "./skills.module.css"
-import FadeInHook from "@/hooks/FadeInHook/FadeInHook";
+import FadeInHook from "@/hooks/effects/FadeInWrapper/FadeInWrapper";
 import firestore from "@/services/firebase/firebase";
 import { collection, getDocs, query } from "firebase/firestore";
 import SkillsType from "@/types/skills.types";

@@ -10,11 +10,11 @@ const [mapElements, setMapElements] = useState(
     if (mapElements.size === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(({ isIntersecting, target }, index) => {
-        mapElements.entries().forEach(([element, callback], idx) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        mapElements.entries().forEach(([element, callback], index) => {
           if (element === target) callback((prev: boolean[]) => {
             const copy = [...prev];
-            copy[idx] = isIntersecting;
+            copy[index] = isIntersecting;
             return copy;
           });
         });

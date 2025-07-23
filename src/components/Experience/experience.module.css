@@ -12,18 +12,15 @@
   transform: translateX(0%);
 }
 
-.item_container {
+/* .item_container {
   position: relative;
   z-index: 1;
   cursor: default;
-}
+} */
+
 .item_container_link {
   cursor: pointer;
 }
-.item_container:hover .svgrepo_color_stroke {
-  stroke: var(--blue);
-}
-
 .link_to_resource {
   position: absolute;
   width: 100%;
@@ -31,15 +28,10 @@
   z-index: 2;
 }
 
-.svgrepo_color_stroke {
-  stroke: #fff;
-  transition: .2s ease-in-out;
-}
-
 @keyframes experience_item_list_invisible_animation {
-  from {
+  0% {
     transform: translateX(0%);
-  } to {
+  } 100% {
     transform: translateX(-10%);
   }
 }

@@ -16,25 +16,13 @@ interface FadeInProps {
   $xaxis: { fromX: number; toX: number };
 }
 
-const keyframe = ({ fromX, toX }: FadeInProps["$xaxis"]) => keyframes`
-  0% {
-    transform: translateX(${fromX}%);
-  }
-  100% {
-    transform: translateX(${toX}%);
-  }
-`;
-
 const FadeInDiv = styled.div<FadeInProps>`
   position: relative;
-  animation-name: ${({ $xaxis }) => keyframe($xaxis)};
-  animation-duration: ${({ $duration }) => $duration};
-  animation-delay: ${({ $delay }) => $delay};
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+  transform: ${({ $xaxis }) => `translateX(${($xaxis.fromX)}%)`};
+  transition: ${({ $duration, $delay }) => `${$duration} ease ${$delay}`}
 `;
 
-function FadeInXAxisHook({
+function FadeInXAxisWrapper({
   tag,
   children,
   className,
@@ -55,4 +43,4 @@ function FadeInXAxisHook({
   );
 }
 
-export default memo(FadeInXAxisHook);
+export default memo(FadeInXAxisWrapper);

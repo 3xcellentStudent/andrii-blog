@@ -45,7 +45,7 @@ const FadeInDiv = styled.div<FadeInProps>`
   animation-timing-function: ease;
 `;
 
-function FadeInHook({tag, children, className, delay, duration, styles}: ComponentProps){
+function FadeInWrapper({tag, children, className, delay, duration, styles}: ComponentProps){
 
   return(
     <FadeInDiv as={tag} $delay={delay} styles={styles} $duration={duration} className={`${className || ""}`}>
@@ -54,4 +54,4 @@ function FadeInHook({tag, children, className, delay, duration, styles}: Compone
   );
 }
 
-export default memo(FadeInHook);
+export default memo(FadeInWrapper);

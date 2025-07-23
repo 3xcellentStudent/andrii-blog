@@ -5,27 +5,8 @@ import styles from "./experience.module.css"
 import { collection, getDocs, query, } from "firebase/firestore"
 import firestore from "@/services/firebase/firebase"
 import ExperienceType from "@/types/experience.types"
-import FadeInXAxisHook from "@/hooks/FadeInLeftHook/FadeInXAxisHook"
+import FadeInXAxisWrapper from "@/hooks/effects/FadeInXAxisWrapper/FadeInXAxisWrapper"
 import useObserver from "@/hooks/useObserver/useObserver"
-
-function LinkWrapper({props, index, intersectingArray}: {
-  props: ExperienceType, index: number, intersectingArray: boolean[]
-}){
-
-  return(
-    <a target="_blank" className={`${styles.item_container} ${styles.item_container_link}`} href={props?.link}>
-      {
-        intersectingArray[index] ?
-        <FadeInXAxisHook key={index} duration="300ms" tag="div" xaxis={{fromX: -10, toX: 0}} >
-          <CardItem props={{...props}} />
-        </FadeInXAxisHook> :
-        <li className={styles.invisible}>
-          <CardItem key={index} props={{...props}} />
-        </li>
-      }
-    </a>
-  )
-}
 
 function Experience(){
 
@@ -33,7 +14,7 @@ function Experience(){
   const [intersectingArray, setIntersectingArray] = useState<boolean[]>([]);
   const SectionRef = useRef<HTMLUListElement | null>(null);
 
-  const {observe} = useObserver(.5);
+  const {observe} = useObserver(.7);
 
   useEffect(() => {
     setData()
@@ -46,6 +27,15 @@ function Experience(){
       })
     }
   }, [!!state.length]);
+
+  const fadeInXAxisWrapperProps = (index: number) => {
+    return {
+      duration: "300ms", 
+      tag: "div", 
+      delay: intersectingArray[index] ? "0ms" : "100ms", 
+      xaxis: intersectingArray[index] ? {fromX: 0, toX: -10} : {fromX: -10, toX: 0},
+    }
+  }
   
   async function setData(){
     const queryByCollection = query(collection(firestore, "experience"));
@@ -63,27 +53,17 @@ function Experience(){
       <SectionTitle text="Experience" />
       <ul ref={SectionRef} className={styles.list}>
           {state?.map((props, index) => {
-
+            const isActive = intersectingArray[index];
             return(
               props?.link ? 
-              <Fragment key={index}>
-                <LinkWrapper index={index} intersectingArray={intersectingArray} props={props} />
-              </Fragment> : 
-              <li className={styles.invisible}>
-                <CardItem key={index} props={{...props}} />
-              </li>
-              // <div className={styles.item_container} key={index}>
-              //   {props?.link && <a target="_blank" className={styles.link_to_resource} href={props?.link}></a>}
-              //   {
-              //     intersectingArray[index] ?
-              //     <FadeInXAxisHook key={index} duration="300ms" tag="div" xaxis={{fromX: -10, toX: 0}} >
-              //       <CardItem props={{...props}} />
-              //     </FadeInXAxisHook> :
-                  // <li className={styles.invisible}>
-                  //   <CardItem key={index} props={{...props}} />
-                  // </li>
-              //   }
-              // </div>
+              <a target="_blank" key={index} className={`${styles.item_container_link}`} href={props?.link}>
+                <FadeInXAxisWrapper {...fadeInXAxisWrapperProps(index)} >
+                  <CardItem isActive={isActive} props={{...props}} />
+                </FadeInXAxisWrapper>
+              </a> : 
+              <FadeInXAxisWrapper key={index} {...fadeInXAxisWrapperProps(index)}>
+                <CardItem isActive={isActive} props={{...props}} />
+              </FadeInXAxisWrapper>
             );
           }
           )}
