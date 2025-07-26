@@ -13,7 +13,8 @@ export default function Contacts(){
 
   const [state, setState] = useState<ContactsTypeWithSVG[]>([])
 
-  const $svgArray = [GitHubSVG, LinkedinSVG, WhatsAppSVG, GmailSVG]
+  // const $svgArray = [GitHubSVG, LinkedinSVG, WhatsAppSVG, GmailSVG]
+  const $svgArray = [GitHubSVG, LinkedinSVG, GmailSVG]
 
   useEffect(() => {
     getData()
