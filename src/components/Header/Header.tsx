@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react"
 import styles from "./header.module.css"
 import Contacts from "./components/Contacts/Contacts"
+import data from "./data.json"
 
 export default function Header(){
-
-  const menu = ["About Me", "Skills", "Experience",]
 
   const [activeTab, setActiveTab] = useState(0)
 
@@ -37,7 +36,7 @@ export default function Header(){
         <p className={styles.short_desctription}>I build accessible, pixel-perfect digital experiences for the web</p>
         <nav className={styles.navigation}>
           <menu>
-            {menu.map((text, index) => 
+            {data.map((text, index) => 
               <li key={index}>
                 <a className={index === activeTab ? styles.tab_active : styles.tab}>{text}</a>
               </li>

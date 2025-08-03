@@ -1,26 +1,21 @@
-import { Fragment, memo, useEffect, useState } from "react"
+import { Fragment } from "react"
 import styles from "./about.module.css"
 import { collection, getDocs, query } from "firebase/firestore";
 import firestore from "@/services/firebase/firebase";
 import SectionTitle from "../common/SectionTitle/SectionTitle";
 
-function About(){
+export default async function About(){
 
-  const [state, setState] = useState<string[] | []>([])
+  const queryByCollection = query(collection(firestore, "about"));
 
-  useEffect(() => {
-    getData()
-  }, [])
+  let state: string[] = [];
 
-  async function getData(){
-    const queryByCollection = query(collection(firestore, "about"));
+  const querySnapshot = await getDocs(queryByCollection);
+  querySnapshot.forEach((doc) => {
+    const summary = doc.data().summary as string[];
 
-    const querySnapshot = await getDocs(queryByCollection);
-    querySnapshot.forEach((doc) => {
-      const data = doc.data().summary as string[];
-      setState(data)
-    });
-  }
+    state = summary;
+  })
 
   return(
     <>
@@ -41,5 +36,3 @@ function About(){
     </>
   );
 }
-
-export default memo(About);

@@ -1,4 +1,6 @@
-import { Fragment, memo, ReactNode, useEffect, useRef, useState } from "react"
+'use client'
+
+import { memo, useEffect, useRef, useState } from "react"
 import SectionTitle from "../common/SectionTitle/SectionTitle"
 import CardItem from "./components/CardItem/CardItem"
 import styles from "./experience.module.css"

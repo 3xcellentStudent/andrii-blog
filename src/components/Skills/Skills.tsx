@@ -1,3 +1,4 @@
+'use client'
 
 import { Fragment, memo, useEffect, useRef, useState, } from "react"
 import SectionTitle from "../common/SectionTitle/SectionTitle"
@@ -23,7 +24,7 @@ function Skills(){
   const [intersectingArray, setIntersectingArray] = useState<boolean[]>([])
   const SectionRef = useRef(null);
 
-  const {observe} = useObserver(.8);
+  const {observe} = useObserver(.45);
 
   useEffect(() => {
     if(!!SectionRef.current){
